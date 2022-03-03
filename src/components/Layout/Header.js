@@ -1,14 +1,16 @@
 import React from "react";
 import mealImage from "../../assets/meals.jpeg";
+import styles from "./Header.module.scss";
+import HeaderCartButton from "./HeaderCartButton";
 
 export default function Header() {
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <h1>React Meals</h1>
-        <button>Cart</button>
+        <HeaderCartButton />
       </header>
-      <div>
+      <div className={styles["main-image"]}>
         <img src={mealImage} alt="A table full of delicious food!" />
       </div>
     </>
