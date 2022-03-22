@@ -1,6 +1,7 @@
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
+import CartProvider from "./store/CartProvider";
 import { useState } from "react";
 import "./App.scss";
 
@@ -15,13 +16,12 @@ function App() {
     setIsCartShow(false);
   };
 
-  //Context로 전역 상태 관리 후 변경 예정
   return (
-    <>
+    <CartProvider>
       <Header onShow={showCartHandler} />
       {isCartShow && <Cart onShow={showCartHandler} onHide={hideCartHandler} />}
       <Meals />
-    </>
+    </CartProvider>
   );
 }
 
