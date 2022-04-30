@@ -1,0 +1,33 @@
+.summary {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  margin-top: -10rem;
+  margin-bottom: 2rem;
+  position: relative;
+  background-color: #333e50;
+  font-family: "Nanum Brush Script", cursive;
+  color: white;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    font-size: 2.5em;
+    margin-top: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 1.5em;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    font-size: 10px;
+  }
+}

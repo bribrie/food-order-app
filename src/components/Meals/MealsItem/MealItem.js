@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import MealItemForm from "./MealItemForm";
 import CartContext from "../../../store/CartContext";
+import styles from "../../../styles/Meals/MealItem.module.scss";
 
 const MealItem = ({ id, name, description, price }) => {
   const cartCtx = useContext(CartContext);
@@ -17,11 +18,11 @@ const MealItem = ({ id, name, description, price }) => {
   const dollarPrice = `$${price.toFixed(2)}`;
 
   return (
-    <li>
+    <li className={styles.meal}>
       <div>
         <h3>{name}</h3>
-        <div>{description}</div>
-        <div>{dollarPrice}</div>
+        <div className={styles.description}>{description}</div>
+        <div className={styles.price}>{dollarPrice}</div>
       </div>
       <div>
         <MealItemForm id={id} onAddToCart={addToCartHandler} />
