@@ -1,37 +1,42 @@
 import Card from "../UI/Card";
 import MealItem from "./MealsItem/MealItem";
 import styles from "../../styles/Meals/AvailableMeals.module.scss";
-
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-];
+import { useEffect, useState } from "react";
 
 const AvailableMeals = () => {
-  //dummy data로 세팅, 추후 변경 예정
-  const MEALS_LIST = DUMMY_MEALS.map((meal) => (
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      setIsLoading(true);
+      const response = await fetch(
+        "https://react-meals-c8fb6-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      if (!response.ok) {
+        throw new Error("Error");
+      }
+
+      const result = await response.json();
+
+      let loadedMeals = [];
+
+      for (let key in result) {
+        loadedMeals.push({
+          id: key,
+          name: result[key].name,
+          description: result[key].description,
+          price: result[key].price,
+        });
+      }
+      setData(loadedMeals);
+      setIsLoading(false);
+    };
+    fetchMeals();
+  }, []);
+
+  const MEALS_LIST = data.map((meal) => (
     <MealItem
       key={meal.id}
       id={meal.id}
@@ -43,9 +48,13 @@ const AvailableMeals = () => {
 
   return (
     <section className={styles.meals}>
-      <Card>
-        <ul>{MEALS_LIST}</ul>
-      </Card>
+      {isLoading ? (
+        <div>Loading..</div>
+      ) : (
+        <Card>
+          <ul>{MEALS_LIST}</ul>
+        </Card>
+      )}
     </section>
   );
 };
