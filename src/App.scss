@@ -1,5 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&family=Nanum+Brush+Script&family=Yeon+Sung&display=swap");
+
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Gothic A1", sans-serif;
+  // font-family: "Nanum Brush Script", cursive;
+  overscroll-behavior: none;
+  // font-family: "Yeon Sung", cursive;
 }
 
 html,
@@ -25,7 +35,6 @@ summary {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 
@@ -45,11 +54,14 @@ section {
 
 body {
   line-height: 1;
+  background-color: #333e50;
 }
 
 ol,
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {

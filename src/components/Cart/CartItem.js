@@ -1,4 +1,4 @@
-import styles from "./CartItem.module.css";
+import styles from "../../styles/Cart/CartItem.module.scss";
 
 const CartItem = ({ name, amount, onRemove, onAdd }) => {
   const price = `$${amount.toFixed(2)}`;
@@ -13,7 +13,7 @@ const CartItem = ({ name, amount, onRemove, onAdd }) => {
         </div>
       </div>
       <div className={styles.actions}>
-        <button onClick={onRemove}>−</button>
+        <button onClick={onRemove}>-</button>
         <button onClick={onAdd}>+</button>
       </div>
     </li>
